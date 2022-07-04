@@ -1,0 +1,58 @@
+digraph {
+	// graph [splines=line]
+	graph [outputorder="edgesfirst"]
+	node [shape=record]
+
+	SixZero [label="6v0"]
+	FiveOne [label="5v1"]
+	FourTwo [label="4v2"]
+	ThreeThree [label="3v3"]
+	TwoFour [label="2v4"]
+	OneFive [label="1v5"]
+	ZeroSix [label="0v6"]
+	FiveOne -> FiveZero, FourOne
+	FourTwo -> FourZero, ThreeOne, TwoTwo
+	ThreeThree -> ThreeOne, TwoTwo, OneThree
+	TwoFour -> ZeroFour, TwoTwo, OneThree
+	OneFive -> OneFour, ZeroFive
+	{ordering=out; FiveOne, FourTwo}
+	{rank=same; FiveOne; FourTwo; ThreeThree; TwoFour}//ThreeThree}
+
+
+	FiveZero [label="5v0"]
+	FourOne  [label="4v1"]
+	ThreeTwo [label="3v2"]
+	TwoThree [label="2v3"]
+	OneFour [label="1v4"]	
+	ZeroFive [label="0v5"]
+	FourOne -> FourZero, ThreeOne
+	ThreeTwo -> OneTwo, TwoOne, ThreeZero
+	TwoThree -> ZeroThree, OneTwo, TwoOne
+	OneFour -> OneThree, ZeroFour
+	{rank=same; FourOne; ThreeTwo; TwoThree}
+
+	FourZero [label="4v0"]
+	ThreeOne [label="3v1"]
+	TwoTwo [label="2v2"]
+	OneThree [label="1v3"]
+	ZeroFour [label="0v4"]
+	ThreeOne -> ThreeZero, TwoOne
+	TwoTwo -> TwoZero, OneOne, ZeroTwo
+	OneThree -> OneTwo, ZeroThree	
+	{rank=same; ThreeOne; TwoTwo; OneThree}
+
+	ThreeZero [label="3v0"]
+	TwoOne [label="2v1"]
+	OneTwo [label="1v2"]
+	ZeroThree [label="0v3"]
+	OneTwo -> OneOne, ZeroTwo
+	TwoOne -> TwoZero, OneOne
+
+	TwoZero [label="2v0"]
+	OneOne [label="1v1"]
+	ZeroTwo [label="0v2"]
+	OneOne -> OneZero, ZeroOne
+
+	OneZero [label="1v0"]
+	ZeroOne [label="0v1"]
+}
